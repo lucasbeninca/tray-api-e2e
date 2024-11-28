@@ -141,7 +141,7 @@ it('Cenario 4: Criando movimentacao', ()=>{
 
       cy.get('td').eq(1)
       .should('have.text', '27/11/2024'); 
-//test
+      
       cy.get('td').eq(2)
       .should('have.text', 'lucasTesteTray'); 
 

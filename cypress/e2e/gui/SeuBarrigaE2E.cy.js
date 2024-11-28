@@ -59,14 +59,12 @@ it('Cenário 2: Login senha invalida', () => {
   cy.get('button[type="submit"]')
     .click()
 
-  // validando mensagem de erro
   cy.get('div.alert.alert-danger[role="alert"]')
   .should('be.visible')
   .and('contain.text', 'Problemas com o login do usuário')
 })
 
 it('Cenário 3: Login senha valida', () => {
-    // Dados do primeiro teste para realizar login
     const nome = Cypress.env('nome')
     const email = Cypress.env('email')
     const senha = Cypress.env('senha') 

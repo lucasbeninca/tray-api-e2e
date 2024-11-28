@@ -14,7 +14,6 @@ it('Cenário 1: Cadastrar novo usuario com sucesso', () => {
   const email = faker.internet.email()
   const senha = faker.internet.password()
 
-  //como preciso reutilizar o ultimo cadastro feito no cenário 1 para realizar o 2 e 3 salvo de forma externa a variavel.
   Cypress.env('nome', nome)
   Cypress.env('email', email)
   Cypress.env('senha', senha)
@@ -47,13 +46,9 @@ it('Cenário 1: Cadastrar novo usuario com sucesso', () => {
     .and('contain.text', 'Usuário inserido com sucesso')
 })
 
-// COMENTÁRIO IMPORTANTE:
-// como boa pratica um teste não deveria depender do outro
-// por isso não é bom depender do 1° teste de cadastro para testar senha inválida
-// fiz dessa forma pois entendo que o desafio busca validar como trabalho com variaveis e valores
 it('Cenário 2: Login senha invalida', () => {
   const email = Cypress.env('email')
-  const senhaInvalida = 'senhainvalida' // Senha inválida para o teste de login poderia criar uma senha nova com o faker mas achei desenecessário
+  const senhaInvalida = 'senhainvalida' 
 
   cy.get('#email')
     .type(email)
@@ -70,10 +65,6 @@ it('Cenário 2: Login senha invalida', () => {
   .and('contain.text', 'Problemas com o login do usuário')
 })
 
-// COMENTÁRIO IMPORTANTE:
-// como boa pratica um teste não deveria depender do outro
-// por isso não é bom depender do 1° teste de cadastro para testar login com sucesso
-// fiz dessa forma pois entendo que o desafio busca validar como trabalho com variaveis e valores
 it('Cenário 3: Login senha valida', () => {
     // Dados do primeiro teste para realizar login
     const nome = Cypress.env('nome')
@@ -98,10 +89,6 @@ it('Cenário 3: Login senha valida', () => {
 it('Cenario 4: Criando movimentacao', ()=>{
 
   const today = dayjs().format('DD/MM/YYYY')
-// não vou usar um  teste para cadastrar um usuário e nem uma conta pois o objetivo do teste é 
-// criar uma movimentação, logo já devo ter esse pré-requisito pronto
-// por isso estou usando um comando personalizado para fazer login e chegar a página de fazer movimentação
-// não sei por quanto tempo a aplicação  Seu barriga persiste os dados então poder ser que o cadastro usado nesse teste tenha sido apagado
   cy.loginEAbreTelaCriarMovimentacao()
 
   cy.get('#data_transacao')

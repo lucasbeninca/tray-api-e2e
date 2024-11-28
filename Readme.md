@@ -21,11 +21,14 @@ Projeto para atender o que foi proposto pela Tray
 
 ## Instalação
 
-Run `npm install` para instalar as dev dependeces
+- Run `npm install` para instalar as dev dependeces
 
+## Estrutura dos testes 
+ - Mantida a pasta padrão do Cypress e2e e dentro dela criado uma pasta api para testes de API e GUI para Testes de interface grafica E2E
 ## Tests
-
-npx cypress open
-
+- **Para abrir o cypress e executar os testes em modo grafico**
+  - npx cypress open
+- **Modo headlers**
+  - npx cypress run
 
 
